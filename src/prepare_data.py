@@ -68,9 +68,7 @@ def parse_scheduled_date(values: pd.Series) -> pd.Series:
     return dates
 
 
-# -------------------------
-# Clean AQI dataset
-# -------------------------
+# Clean the AQI dataset
 aqi = pd.read_csv(RAW_DIR / "sarajevo_hourly.csv")
 aqi["datetime"] = pd.to_datetime(aqi["datetime"], dayfirst=True)
 
@@ -115,9 +113,7 @@ clean_aqi["smog_risk"] = (
 clean_aqi.to_csv(PROCESSED_DIR / "clean_aqi.csv", index=False)
 
 
-# -------------------------
 # Clean flights dataset
-# -------------------------
 flights = load_arrivals(RAW_DIR / "sarajevo_arrivals.csv")
 flights["flight_status"] = flights["flight_status"].astype(str).str.strip()
 
@@ -133,7 +129,7 @@ flights["is_winter_month"] = flights["month"].isin([11, 12, 1, 2]).astype(int)
 flights["origin_city"] = flights["city"].apply(parse_origin_city)
 flights["origin_iata"] = flights["city"].apply(parse_origin_iata)
 
-# Keep Unknown out of the model, but include Cancelled as a non-landing outcome.
+# Removing unknown flights as they are not significant, and creating classification criteria for landed and not landed flights
 flights_model = flights[
     flights["flight_status"].isin(["Landed", "Diverted", "Cancelled"])
 ].copy()
@@ -161,9 +157,8 @@ clean_flights = flights_model[flight_columns].copy()
 clean_flights = clean_flights.rename(columns={"flight_status": "status"})
 
 
-# -------------------------
 # Merge flights with AQI
-# -------------------------
+
 flight_environment = clean_flights.merge(
     clean_aqi,
     left_on="scheduled_hour",
