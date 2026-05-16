@@ -1,0 +1,11 @@
+#Required libraries for ELIAIR project
+#Install with !pip install -r requirements.txt
+
+numpy
+pandas
+xgboost
+scikit-learn
+matplotlib
+seaborn
+tensorflow
+jupyter
