@@ -24,6 +24,11 @@ Existing systems treat air quality and flight safety as separate domains. ELIAIR
 - [Limitations & Future Work](#limitations--future-work)
 - [Contributing](#contributing)
 - [License](#license)
+## Poster
+
+[ELIAR PROJECT POSTER.pdf](https://github.com/user-attachments/files/28837150/ELIAR.PROJECT.POSTER.pdf)
+
+
 ## Overview
  
 Air quality in Sarajevo is among the worst in Europe during winter months, driven by topographic inversions, coal heating, and traffic emissions. ELIAIR bridges two domains that are rarely combined - environmental science and aviation operations - to produce a data-driven, hour-ahead safety signal for flight landings at Sarajevo International Airport.
