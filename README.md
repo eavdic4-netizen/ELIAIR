@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Data-AQI%20%2B%20Flight-lightgrey"/>
   <img src="https://img.shields.io/badge/Model-LSTM-teal"/>
   <img src="https://img.shields.io/badge/Model-XGBoost-teal"/>
-  <img src="https://img.shields.io/badge/R²-0.9964-brightgreen"/>
   <img src="https://img.shields.io/badge/License-MIT-yellow"/>
 </p>
 
