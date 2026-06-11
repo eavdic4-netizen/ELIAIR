@@ -123,19 +123,30 @@ Open and run `notebooks/xgboost_landing_safety.ipynb`. Both CSV files must be av
 ```
 ELIAIR/
 ├── data/
-│   ├── clean_aqi.csv
-│   └── flight_environment_dataset.csv
-├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_lstm_aqi_prediction.ipynb
-│   └── 03_xgboost_landing_prediction.ipynb
+│   ├── processed/
+│   │   ├── clean_aqi.csv
+│   │   └── flight_environment_dataset.csv
+│   └── raw/
+│       ├── sarajevo_arrivals.csv
+│       └── sarajevo_hourly.csv
 ├── graphs/
 │   ├── lstm loss.png
 │   ├── lstm prediction.png
 │   ├── lstm r2.png
 │   ├── xgboost features.png
 │   └── xgboost matrix.png
-└── README.md
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_lstm_aqi_prediction.ipynb
+│   └── 03_xgboost_landing_prediction.ipynb
+├── src/
+│   └── prepare_data.py
+├── .gitignore
+├── ELIAIR PROJECT POSTER.pdf
+├── LICENSE
+├── README.md
+├── eliair-flight-risk-simulator.zip
+└── requirements.txt
 ```
  
 ## Methodology
