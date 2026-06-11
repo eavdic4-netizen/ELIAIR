@@ -148,6 +148,7 @@ MIT License
 | Name | GitHub |
 |---|---|
 | Ena Avdić | [@eavdic4-netizen](https://github.com/eavdic4-netizen) |
-| Iman Duratbegović | [@username](https://github.com/username) |
-| Lejla Lolić | [@username](https://github.com/username) |
-| Ajna Vegara | [@username](https://github.com/username) |
+| Iman Duratbegović | [@imoniia](https://github.com/imoniia) |
+| Lejla Lolić | [@lejla-lolic](https://github.com/lejla-lolic) |
+| Ajna Vegara | [@avegara1-spec](https://github.com/avegara1-spec) |
+
