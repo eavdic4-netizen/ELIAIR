@@ -63,7 +63,7 @@ computer, then opens in your browser.
 The website estimates Sarajevo flight landing/disruption risk from flight
 details, weather, and air-quality conditions.
 
-## Quick Start
+**Quick Start**
 
 1. Unzip `eliair-flight-risk-simulator.zip`.
 2. Open the unzipped `eliair-flight-risk-simulator` folder.
@@ -82,7 +82,7 @@ http://127.0.0.1:8000/eliair-flight-risk-simulator
 The port may be `8001`, `8002`, or another number if `8000` is already busy.
 Always use the exact URL printed by the launcher.
 
-## Steps for windows
+**Steps for windows**
 
 1. Open the `eliair-flight-risk-simulator` folder.
 2. Double-click `start_windows.bat`.
@@ -92,7 +92,7 @@ Always use the exact URL printed by the launcher.
 If the browser does not open, copy the URL from the black command window and
 paste it into your browser.
 
-## Steps for macOS
+**Steps for macOS**
 
 Recommended method:
 
