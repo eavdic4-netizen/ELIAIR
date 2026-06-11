@@ -66,8 +66,7 @@ ELIAIR/
 ├── notebooks/
 │   ├── lstm_aqi_forecasting.ipynb
 │   └── xgboost_landing_safety.ipynb
-├── lstm_outputs/
-│   └── lstm_aqi_best.pt
+├── graphs/
 └── README.md
 ```
  
