@@ -54,6 +54,59 @@ The following packages are used and are all available by default in Colab:
 ```
 torch, scikit-learn, xgboost, pandas, numpy, matplotlib, seaborn
 ```
+
+## ELIAIR Flight Risk Simulator
+
+This folder contains the ELIAIR website demo. It runs locally on your own
+computer, then opens in your browser.
+
+The website estimates Sarajevo flight landing/disruption risk from flight
+details, weather, and air-quality conditions.
+
+## Quick Start
+
+1. Unzip `eliair-flight-risk-simulator.zip`.
+2. Open the unzipped `eliair-flight-risk-simulator` folder.
+3. Start the app using the instructions for your operating system below.
+4. Keep the Terminal/command window open while using the website.
+
+The website will open automatically if everything works.
+
+If it does not open automatically, copy the URL printed in the Terminal/command
+window. It will look similar to this:
+
+```text
+http://127.0.0.1:8000/eliair-flight-risk-simulator
+```
+
+The port may be `8001`, `8002`, or another number if `8000` is already busy.
+Always use the exact URL printed by the launcher.
+
+## Steps for windows
+
+1. Open the `eliair-flight-risk-simulator` folder.
+2. Double-click `start_windows.bat`.
+3. Wait while packages install.
+4. The browser should open automatically.
+
+If the browser does not open, copy the URL from the black command window and
+paste it into your browser.
+
+## Steps for macOS
+
+Recommended method:
+
+1. Open Terminal.
+2. Type `cd ` with a space after it.
+3. Drag the `eliair-flight-risk-simulator` folder into Terminal.
+4. Press Enter.
+5. Run this command:
+
+```bash
+python3 start.py
+```
+
+Further details are provided within the zip file.
  
 ## Usage
  
