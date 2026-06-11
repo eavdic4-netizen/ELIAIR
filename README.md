@@ -64,9 +64,15 @@ ELIAIR/
 │   ├── clean_aqi.csv
 │   └── flight_environment_dataset.csv
 ├── notebooks/
-│   ├── lstm_aqi_forecasting.ipynb
-│   └── xgboost_landing_safety.ipynb
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_lstm_aqi_prediction.ipynb
+│   └── 03_xgboost_landing_prediction.ipynb
 ├── graphs/
+│   ├── lstm loss.png
+│   ├── lstm prediction.png
+│   ├── lstm r2.png
+│   ├── xgboost features.png
+│   └── xgboost matrix.png
 └── README.md
 ```
  
