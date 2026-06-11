@@ -1,25 +1,115 @@
 # ELIAIR - PREDICTING AIR QUALITY AND LANDING SAFETY VIA LSTM-XGBOOST FUSION
-
-## Project description:
-This project aims to predict air quality in Sarajevo and estimate environmental risk levels using a hybrid LSTM-XGBoost model.
-
 Sarajevo sits in a valley surrounded by mountains, the geography that traps pollutants and fog with striking regularity. Each winter the city ranks among Europe's most polluted cities with PM2.5 and PM10 levels. For pilots approaching Sarajevo International Airport this is a potential operational challenge.
 
-Existing systems treat air quality and flight safety as separate domains. ELIAIR connects them by using hybrid modeling (LSTM, XGBoost) to forecast pollution trajectories and translate them into actionable landing safety assessments before conditions deteriorate beyond safe limits.
+Existing systems treat air quality and flight safety as separate domains. ELIAIR connects them by creating a modular system (LSTM, XGBoost) to forecast pollution trajectories and make actionable landing safety assessments before conditions deteriorate beyond safe limits.
 
 
-## Project plan:
-1) Collecting data, preprocessing and normalizing
-2) Training for predictions using LSTM
-3) Classifying the data for flight safety using XGBoost
-4) Validation and evaluation
-
-## Data sources:
-Open-Meteo https://open-meteo.com/ 
-
-Openaq https://openaq.org/
-
-Flightera https://www.flightera.net/
+## Table of Contents
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Methodology](#methodology)
+- [Results](#results)
+- [Limitations & Future Work](#limitations--future-work)
+- [Contributing](#contributing)
+- [License](#license)
+## Overview
+ 
+Air quality in Sarajevo is among the worst in Europe during winter months, driven by topographic inversions, coal heating, and traffic emissions. ELIAIR bridges two domains that are rarely combined - environmental science and aviation operations - to produce a data-driven, hour-ahead safety signal for flight landings at Sarajevo International Airport.
+ 
+The system consists of two independently trained models:
+ 
+- **LSTM** - forecasts the next hour's European AQI value from a 24-hour window of pollution and meteorological data
+- **XGBoost** - classifies whether a flight will successfully land, given environmental conditions, airline, origin, and seasonal context
+The two models currently operate in parallel rather than in sequence — both consume the same underlying AQI dataset, but do not interact at inference time. Connecting them so that the LSTM's forecast feeds directly into XGBoost is an identified direction for future work.
+ 
+Data is sourced from [Open-Meteo](https://open-meteo.com/) (meteorological), [OpenAQ](https://openaq.org/) (air quality), and [Flightera](https://www.flightera.net/) (flight operations), covering March 2022-March 2026.
+ 
+## Installation
+ 
+1. Clone the repository:
+```bash
+git clone https://github.com/eavdic4-netizen/ELIAIR.git
+cd ELIAIR
+```
+ 
+2. Install dependencies:
+```bash
+pip install torch scikit-learn xgboost pandas numpy matplotlib seaborn
+```
+ 
+> CUDA-enabled GPU is optional but recommended for LSTM training. The code will fall back to CPU automatically.
+ 
+3. Place the data files in the `data/` folder:
+```
+data/
+├── clean_aqi.csv
+└── flight_environment_dataset.csv
+```
+ 
+## Usage
+ 
+**LSTM - AQI Forecasting**
+ 
+Open and run `notebooks/lstm_aqi_forecasting.ipynb`. The notebook will train the model and save the best checkpoint to `lstm_outputs/lstm_aqi_best.pt`.
+ 
+**XGBoost - Landing Safety Classification**
+ 
+Open and run `notebooks/xgboost_landing_safety.ipynb`. Both CSV files must be available before running. The notebook will merge the datasets, train the classifier, and output evaluation metrics and feature importance plots.
+ 
+**Project structure:**
+```
+ELIAIR/
+├── data/
+│   ├── clean_aqi.csv
+│   └── flight_environment_dataset.csv
+├── notebooks/
+│   ├── lstm_aqi_forecasting.ipynb
+│   └── xgboost_landing_safety.ipynb
+├── lstm_outputs/
+│   └── lstm_aqi_best.pt
+└── README.md
+```
+ 
+## Methodology
+ 
+### LSTM - AQI Forecasting
+ 
+The LSTM is a two-layer network (128 hidden units, dropout 0.2) trained on 14 input features including European AQI, PM2.5, PM10, temperature, humidity, wind speed, wind gusts, precipitation, snowfall, cloud cover, weather code, and calendar features (hour, day of week, month). It takes a rolling 24-hour window and predicts the AQI one hour ahead.
+ 
+Data is split chronologically — 70% train, 15% validation, 15% test — with MinMaxScaler fit only on training data to prevent leakage. Training uses the Adam optimizer with MSE loss, gradient clipping, a `ReduceLROnPlateau` scheduler, and early stopping (patience = 10).
+ 
+### XGBoost - Landing Safety Classification
+ 
+The XGBoost classifier predicts a binary outcome: whether a flight lands successfully. Flight records are merged with hourly AQI data on scheduled arrival time, producing a combined feature set of 22 variables. Categorical features (airline, origin city, IATA code) are one-hot encoded. Class imbalance — only 320 "did not land" events out of 27,626 flights — is addressed via sample weighting. The model runs 300 boosting rounds with max depth 4 and learning rate 0.05.
+ 
+## Results
+ 
+| Model | Metric | Value |
+|---|---|---|
+| LSTM | MAE | 0.957 |
+| LSTM | RMSE | 1.270 |
+| LSTM | R² | 0.9964 |
+| XGBoost | Accuracy | 92.15% |
+| XGBoost | ROC AUC | 0.7857 |
+| XGBoost | F1 (landed) | 0.96 |
+| XGBoost | F1 (did not land) | 0.12 |
+ 
+The LSTM captures AQI dynamics with high accuracy. The XGBoost classifier performs well on the majority class but struggles with the rare unsafe-landing events - a known challenge with heavily imbalanced real-world aviation data.
+ 
+## Limitations & Future Work
+ 
+- **Feature engineering** - the two models are currently trained independently. A planned next step is connecting them so that the LSTM's AQI forecast becomes a direct input feature to the XGBoost classifier, creating a true end-to-end pipeline.
+- **Improving the classifier** - the severe class imbalance (320 unsafe landings out of 27,626 flights) limits the model's ability to reliably detect dangerous conditions. Future work includes oversampling techniques like SMOTE, refining the "did not land" label to exclude outcomes unrelated to environmental conditions such as mechanical issues or scheduling, and lowering the classification threshold to recover recall on unsafe landings.
+- **Expanding to all Bosnian airports** - the model is currently scoped to Sarajevo. A natural extension is adapting it for Tuzla, Banja Luka, and Mostar, each of which has distinct topographic and pollution profiles worth modeling separately.
+- **Better flight data** - current flight data is sourced from public tracking sites. Obtaining historical landing records directly from airports would improve data quality and also allow exploration of what actually happens to flights that fail to land at their intended destination — whether they divert, return, or hold.
+## Contributing
+ 
+Contributions are welcome. Please open an issue first to discuss what you would like to change, then submit a pull request.
+ 
+## License
+ 
+MIT License
 
 ## Team members:
 Avdić Ena
