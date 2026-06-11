@@ -27,24 +27,14 @@ Data is sourced from [Open-Meteo](https://open-meteo.com/) (meteorological), [Op
  
 ## Installation
  
-1. Clone the repository:
-```bash
-git clone https://github.com/eavdic4-netizen/ELIAIR.git
-cd ELIAIR
-```
+No local installation is required. The notebooks are designed to run on [Google Colab](https://colab.research.google.com/), which provides free GPU access and all necessary dependencies pre-installed.
  
-2. Install dependencies:
-```bash
-pip install torch scikit-learn xgboost pandas numpy matplotlib seaborn
+1. Clone or download the repository
+2. Upload the notebooks to Google Colab
+3. When prompted, upload the required CSV files from the `data/` folder
+The following packages are used and are all available by default in Colab:
 ```
- 
-> CUDA-enabled GPU is optional but recommended for LSTM training. The code will fall back to CPU automatically.
- 
-3. Place the data files in the `data/` folder:
-```
-data/
-├── clean_aqi.csv
-└── flight_environment_dataset.csv
+torch, scikit-learn, xgboost, pandas, numpy, matplotlib, seaborn
 ```
  
 ## Usage
