@@ -26,7 +26,8 @@ Existing systems treat air quality and flight safety as separate domains. ELIAIR
 - [License](#license)
 ## Poster
 
-[ELIAR PROJECT POSTER.pdf](https://github.com/user-attachments/files/28837150/ELIAR.PROJECT.POSTER.pdf)
+<img width="2200" height="3400" alt="ELIAR PROJECT POSTER-1" src="https://github.com/user-attachments/assets/d76ce73a-e4c6-45a0-b5d8-32c9ca598bd9" />
+
 
 
 ## Overview
