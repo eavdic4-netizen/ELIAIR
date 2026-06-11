@@ -18,6 +18,7 @@ Existing systems treat air quality and flight safety as separate domains. ELIAIR
 ## Table of Contents
 - [Overview](#overview)
 - [Installation](#installation)
+- [ELIAIR Flight Risk Simulator](#eliair-flight-risk-simulator)
 - [Usage](#usage)
 - [Methodology](#methodology)
 - [Results](#results)
@@ -57,7 +58,7 @@ torch, scikit-learn, xgboost, pandas, numpy, matplotlib, seaborn
 
 ## ELIAIR Flight Risk Simulator
 
-This folder contains the ELIAIR website demo. It runs locally on your own
+The zipped folder contains the ELIAIR website demo. It runs locally on your own
 computer, then opens in your browser.
 
 The website estimates Sarajevo flight landing/disruption risk from flight
