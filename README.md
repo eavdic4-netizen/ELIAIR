@@ -1,4 +1,16 @@
 # ELIAIR - PREDICTING AIR QUALITY AND LANDING SAFETY VIA LSTM-XGBOOST FUSION
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python"/>
+  <img src="https://img.shields.io/badge/Platform-Google%20Colab-orange?logo=googlecolab"/>
+  <img src="https://img.shields.io/badge/Data-AQI%20%2B%20Flight-lightgrey"/>
+  <img src="https://img.shields.io/badge/Model-LSTM-teal"/>
+  <img src="https://img.shields.io/badge/Model-XGBoost-teal"/>
+  <img src="https://img.shields.io/badge/R²-0.9964-brightgreen"/>
+  <img src="https://img.shields.io/badge/License-MIT-yellow"/>
+</p>
+
+
 Sarajevo sits in a valley surrounded by mountains, the geography that traps pollutants and fog with striking regularity. Each winter the city ranks among Europe's most polluted cities with PM2.5 and PM10 levels. For pilots approaching Sarajevo International Airport this is a potential operational challenge.
 
 Existing systems treat air quality and flight safety as separate domains. ELIAIR connects them by creating a modular system (LSTM, XGBoost) to forecast pollution trajectories and make actionable landing safety assessments before conditions deteriorate beyond safe limits.
@@ -134,10 +146,9 @@ Contributions are welcome. Please open an issue first to discuss what you would 
 MIT License
 
 ## Team members:
-Avdić Ena
-
-Duratbegović Iman
-
-Lolić Lejla
-
-Vegara Ajna
+| Name | GitHub |
+|---|---|
+| Ena Avdić | [@eavdic4-netizen](https://github.com/eavdic4-netizen) |
+| Iman Duratbegović | [@username](https://github.com/username) |
+| Lejla Lolić | [@username](https://github.com/username) |
+| Ajna Vegara | [@username](https://github.com/username) |
