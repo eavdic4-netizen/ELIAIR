@@ -111,6 +111,7 @@ The LSTM captures AQI dynamics with high accuracy. The XGBoost classifier perfor
   <img src="graphs/lstm%20r2.png" width="450"/>
   <br><em>R² scatter plot</em>
 </p>
+
 ### XGBoost Results
  
 <p align="center">
