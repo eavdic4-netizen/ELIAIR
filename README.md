@@ -22,6 +22,7 @@ Existing systems treat air quality and flight safety as separate domains. ELIAIR
 - [Methodology](#methodology)
 - [Results](#results)
 - [Limitations & Future Work](#limitations--future-work)
+- [Conclusion](#conclusion)
 - [Contributing](#contributing)
 - [License](#license)
 ## Poster
@@ -142,6 +143,13 @@ The LSTM captures AQI dynamics with high accuracy. The XGBoost classifier perfor
 - **Improving the classifier** - the severe class imbalance (320 unsafe landings out of 27,626 flights) limits the model's ability to reliably detect dangerous conditions. Future work includes oversampling techniques like SMOTE, refining the "did not land" label to exclude outcomes unrelated to environmental conditions such as mechanical issues or scheduling, and lowering the classification threshold to recover recall on unsafe landings.
 - **Expanding to all Bosnian airports** - the model is currently scoped to Sarajevo. A natural extension is adapting it for Tuzla, Banja Luka, and Mostar, each of which has distinct topographic and pollution profiles worth modeling separately.
 - **Better flight data** - current flight data is sourced from public tracking sites. Obtaining historical landing records directly from airports would improve data quality and also allow exploration of what actually happens to flights that fail to land at their intended destination — whether they divert, return, or hold.
+
+## Conclusion
+
+ELIAIR shows that air quality forecasting and flight safety assessment can be meaningfully connected through a hybrid machine learning pipeline. The LSTM component successfully captured the dynamics of Sarajevo’s pollution patterns and produced highly-accurate hour-ahead AQI predictions. The XGBoost classifier then translated environmental and operational context into landing safety assessments, demonstrating that the meteorological conditions, seasonality and route characteristics, all combined, carry predictive signals for flight outcomes. The two models currently operate in parallel, which will be changed into operating in sequence in the future. The classifier’s difficulties with unsafe landing events also highlights the challenge of working with real-world aviation data. 
+Overall, ELIAIR lays a solid foundation for AI-assisted environmental risk assessment in aviation, with its design making it a promising basis for further development toward a deployable decision-support tool for airports.
+
+
 ## Contributing
  
 Contributions are welcome. Please open an issue first to discuss what you would like to change, then submit a pull request.
