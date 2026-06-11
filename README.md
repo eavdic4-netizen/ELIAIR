@@ -96,6 +96,32 @@ The XGBoost classifier predicts a binary outcome: whether a flight lands success
 | XGBoost | F1 (did not land) | 0.12 |
  
 The LSTM captures AQI dynamics with high accuracy. The XGBoost classifier performs well on the majority class but struggles with the rare unsafe-landing events - a known challenge with heavily imbalanced real-world aviation data.
+
+### LSTM Results
+ 
+<p align="center">
+  <img src="graphs/lstm%20loss.png" width="700"/>
+  <br><em>Training vs validation loss curve</em>
+</p>
+<p align="center">
+  <img src="graphs/lstm%20prediction.png" width="700"/>
+  <br><em>Actual vs predicted AQI values</em>
+</p>
+<p align="center">
+  <img src="graphs/lstm%20r2.png" width="450"/>
+  <br><em>R² scatter plot</em>
+</p>
+### XGBoost Results
+ 
+<p align="center">
+  <img src="graphs/xgboost%20features.png" width="700"/>
+  <br><em>Top feature importances by gain</em>
+</p>
+<p align="center">
+  <img src="graphs/xgboost%20matrix.png" width="450"/>
+  <br><em>Confusion matrix</em>
+</p>
+
  
 ## Limitations & Future Work
  
